@@ -180,6 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--    </div>-->
 <!--  </div>-->
 <!--</section>-->
+
 <section class="section">
   <div class="container is-fluid">
     <div class="columns is-centered has-text-centered">
@@ -200,6 +201,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column content">
+        <figure class="image is-fullwidth">
+          <img src="./static/images/maze_main_figure.png" alt="Maze layout evaluation results">
+          <figcaption class="is-size-5">
+            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only JEPA solves the task (see Figure 3 for more).  
+            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. JEPA demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on JEPA.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -209,8 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           A long-standing goal in AI is to build agents that can solve a variety of tasks across different environments, including previously unseen ones. Two dominant approaches tackle this challenge: (i) reinforcement learning (RL), which learns policies through trial and error, and (ii) optimal control, which plans actions using a learned or known dynamics model. However, their relative strengths and weaknesses remain underexplored in the setting where agents must learn from offline trajectories without reward annotations.
           </p>
           <p>In this work, we systematically analyze the performance of different RL and control-based methods under datasets of varying quality. On the RL side, we consider goal-conditioned and zero-shot approaches. On the control side, we train a latent dynamics model using the Joint Embedding Predictive Architecture (JEPA) and use it for planning. We study how dataset properties—such as data diversity, trajectory quality, and environment variability—affect the performance of these approaches.</p>
-          <p>
-          Our results show that model-free RL excels when abundant, high-quality data is available, while model-based planning excels in generalization to novel environment leayouts, in trajectory stitching, and data-efficiency. Notably, planning with a latent dynamics model emerges as a promising approach for zero-shot generalization from suboptimal data.</p>
+          <p>Our results show that model-free RL excels when abundant, high-quality data is available, while model-based planning excels in generalization to novel environment leayouts, in trajectory stitching, and data-efficiency. Notably, planning with a latent dynamics model emerges as a promising approach for zero-shot generalization from suboptimal data.</p>
           </p>
         </div>
       </div>
@@ -230,7 +246,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }</code></pre>
   </div>
 </section>
-
 
 <footer class="footer">
   <div class="container">
