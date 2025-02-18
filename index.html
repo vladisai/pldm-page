@@ -55,24 +55,24 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://vladisai.github.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-    </div>
-  </div>
-</nav>
+<!--<nav class="navbar" role="navigation" aria-label="main navigation">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--  <div class="navbar-menu">-->
+<!--    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">-->
+<!--      <a class="navbar-item" href="https://vladisai.github.io">-->
+<!--      <span class="icon">-->
+<!--          <i class="fas fa-home"></i>-->
+<!--      </span>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
 
 
 <section class="hero">
@@ -186,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container is-max-dextop">
     <div class="columns is-centered has-text-centered">
       <div class="column content">
-        <h2 class="title is-4">Overview figure</h2>
+        <h2 class="title is-3">Overview</h2>
         <figure class="image is-fullwidth">
           <img src="./static/images/main_idea.png" alt="Overview of our analysis">
           <figcaption class="is-size-5">
@@ -212,16 +212,170 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </p>
           <p>In this work, we systematically analyze the performance of different RL and control-based methods under datasets of varying quality. On the RL side, we consider goal-conditioned and zero-shot approaches. On the control side, we train a latent dynamics model using the Joint Embedding Predictive Architecture (JEPA) and use it for planning. We study how dataset properties—such as data diversity, trajectory quality, and environment variability—affect the performance of these approaches.</p>
           <p>Our results show that model-free RL excels when abundant, high-quality data is available, while model-based planning excels in generalization to novel environment leayouts, in trajectory stitching, and data-efficiency. Notably, planning with a latent dynamics model emerges as a promising approach for zero-shot generalization from suboptimal data.</p>
-          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section" id="setting">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Environments</h2>
+    <h3 class="title is-4">Example Trajectories from the Dataset</h2>
+    <p>
+      The following GIFs show example trajectories collected in the dataset. These illustrate the 
+      variety of movements and behaviors captured in different data settings.
+    </p>
+    <h4 class="title is-5">Good quality-trajectories (length=90)</h4>
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/good_ds/episode_0.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/good_ds/episode_1.gif" alt="Example trajectory 2">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/good_ds/episode_2.gif" alt="Example trajectory 3">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/good_ds/episode_3.gif" alt="Example trajectory 4">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/good_ds/episode_4.gif" alt="Example trajectory 5">
+        </figure>
+      </div>
+    </div>
+    <h4 class="title is-5">Random policy trajectories</h4>
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/random_ds/episode_0.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/random_ds/episode_1.gif" alt="Example trajectory 2">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/random_ds/episode_2.gif" alt="Example trajectory 3">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/random_ds/episode_3.gif" alt="Example trajectory 4">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/random_ds/episode_4.gif" alt="Example trajectory 5">
+        </figure>
+      </div>
+    </div>
 
-<section class="section">
-  <div class="container is-max-desktop">
+    <h4 class="title is-5">Trajectories of length 16</h4>
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/17_ds/episode_0.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/17_ds/episode_1.gif" alt="Example trajectory 2">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/17_ds/episode_2.gif" alt="Example trajectory 3">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/17_ds/episode_3.gif" alt="Example trajectory 4">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/17_ds/episode_4.gif" alt="Example trajectory 5">
+        </figure>
+      </div>
+    </div>
+
+    <h4 class="title is-5">Trajectories of length 32</h4>
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/33_ds/episode_0.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/33_ds/episode_1.gif" alt="Example trajectory 2">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/33_ds/episode_2.gif" alt="Example trajectory 3">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/33_ds/episode_3.gif" alt="Example trajectory 4">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/33_ds/episode_4.gif" alt="Example trajectory 5">
+        </figure>
+      </div>
+    </div>
+
+    <h4 class="title is-5">Trajectories of length 64</h4>
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/65_ds/episode_0.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/65_ds/episode_1.gif" alt="Example trajectory 2">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/65_ds/episode_2.gif" alt="Example trajectory 3">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/65_ds/episode_3.gif" alt="Example trajectory 4">
+        </figure>
+      </div>
+      <div class="column is-one-fifth">
+        <figure class="image gif-container">
+          <img src="./static/trajs/65_ds/episode_4.gif" alt="Example trajectory 5">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Results -->
+<section class="section" id="results">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Main Results</h2>
     <div class="columns is-centered has-text-centered">
       <div class="column content">
         <figure class="image is-fullwidth">
@@ -233,13 +387,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </figure>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Main Results -->
-<section class="section" id="results">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3">Main Results</h2>
     <p class="has-text-justified">
       We thoroughly evaluated six methods for learning from reward-free offline trajectories. The table below summarizes their performance across several key challenges:
       <em>(i)</em> Transfer to new environments,
@@ -259,13 +406,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </figcaption>
     </figure>
 
-    <h3 class="title is-4">Discussion</h3>
+    <figure class="image is-fullwidth">
+        <img src="./static/images/all_exps.png" alt="Main experiments on two rooms environment.">
+        <figcaption class="is-size-5">
+            <strong>Testing the selected methods' performance under different dataset constraints.</strong> 
+            Values and shaded regions are means and standard deviations over 3 seeds, respectively.
+            <br>
+            <strong>Left:</strong> To test the importance of the dataset quality, we mix the random policy trajectories 
+            and better quality trajectories (see Figure <a href="#fig-traj-examples">X</a>). 
+            As the amount of good quality data goes to 0, methods begin to fail, with PLDM (JEPA) and HILP being the most robust ones.
+            <br>
+            <strong>Center:</strong> We measure methods' performance when trained with different sequence lengths. 
+            We find that many goal-conditioned methods fail when train trajectories are short, which causes far-away goals 
+            to become out-of-distribution for the resulting policy.
+            <br>
+            <strong>Right:</strong> We measure methods' performance with datasets of varying sizes. 
+            We see that PLDM (JEPA) is the most sample efficient and manages to get almost 50% success rate 
+            even with a few thousand transitions.
+        </figcaption>
+    </figure>
+
+    <h3 class="title is-3">Takeaways</h3>
     <ul>
       <li>
-        <strong>Model-free GCRL (HIQL, GCIQL, CRL, GCBC):</strong> Works extremely well when data coverage is high and trajectories are good-quality. However, these methods struggle when data is sparse, short-horizon, random, or requires stitching.
+        <strong>Model-free GCRL (HIQL, GCIQL, CRL):</strong> Works extremely well when data coverage is high and trajectories are good-quality. However, these methods struggle when data is sparse, short-horizon, random, or requires stitching.
       </li>
       <li>
-        <strong>HILP:</strong> Performs robustly under poor-quality data and can stitch short segments together. It is, however, somewhat more data-hungry and does not generalize as well to new tasks as a learned dynamics model.
+        <strong>HILP:</strong> Performs robustly under poor-quality data and can stitch short segments together. However, it is somewhat more data-hungry and does not generalize as well to new tasks as a learned dynamics model.
       </li>
       <li>
         <strong>Planning with a Latent Dynamics Model (PLDM/JEPA):</strong> Shows the best generalization in almost all challenging scenarios—suboptimal data, few samples, new tasks, and new environment layouts—at the cost of somewhat weaker best-case performance (compared to specialized RL) and higher inference-time overhead due to planning.

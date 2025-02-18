@@ -155,3 +155,28 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.gif-container img {
+  width: 200px;
+  max-width: 200px; /* Prevents stretching */
+  height: auto;
+}
+
+/* Ensure GIFs take full width on smaller screens */
+@media (max-width: 2024px) {
+  .column.is-one-fifth {
+    flex: 1 1 20%; /* Two GIFs per row */
+  }
+}
+
+@media (max-width: 1024px) {
+  .column.is-one-fifth {
+    flex: 1 1 45%; /* Two GIFs per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .column.is-one-fifth {
+    flex: 1 1 100%; /* One GIF per row on small screens */
+  }
+}
