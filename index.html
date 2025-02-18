@@ -47,7 +47,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <!--<script src="./static/js/index.js"></script>-->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -83,9 +83,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 class="title is-1 publication-title">Learning from Reward-Free Offline Data: A Case for Planning with Latent Dynamics Models</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://vladisai.github.io">Vlad Sobal</a><sup>1</sup>,</span>
+              <a href="https://vladisai.github.io">Vlad Sobal</a><sup>*1</sup>,</span>
             <span class="author-block">
-              <a href="https://kevinghst.github.io/">Wancong Zhang</a><sup>1</sup>,</span>
+              <a href="https://kevinghst.github.io/">Wancong Zhang</a><sup>*1</sup>,</span>
             <span class="author-block">
               <a href="https://kyunghyuncho.me/">Kyunghyun Cho</a><sup>1,2</sup>,
             </span>
@@ -96,15 +96,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="https://timrudner.com/">Tim G. J. Rudner</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://yann.lecun.com/">Yann LeCun</a><sup>1,4</sup>,
+              <a href="http://yann.lecun.com/">Yann LeCun</a><sup>1,4</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>New York University,</span>
-            <span class="author-block"><sup>2</sup>Genentech</span>
-            <span class="author-block"><sup>3</sup>Brown University</span>
-            <span class="author-block"><sup>4</sup>Meta FAIR</span>
+            <span class="author-block"><sup>2</sup>Genentech,</span>
+            <span class="author-block"><sup>3</sup>Brown University,</span>
+            <span class="author-block"><sup>4</sup>Meta FAIR</span><br/>
+            <span class="author-block"><sup>*</sup>Equal contribution, order determined by coin flip,</span>
           </div>
 
           <div class="column has-text-centered">
@@ -201,22 +202,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column content">
-        <figure class="image is-fullwidth">
-          <img src="./static/images/maze_main_figure.png" alt="Maze layout evaluation results">
-          <figcaption class="is-size-5">
-            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only JEPA solves the task (see Figure 3 for more).  
-            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. JEPA demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on JEPA.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -233,6 +218,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column content">
+        <figure class="image is-fullwidth">
+          <img src="./static/images/layout_change.png" alt="Maze layout evaluation results">
+          <figcaption class="is-size-5">
+            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only JEPA solves the task (see Figure 3 for more).  
+            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. JEPA demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on JEPA.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Results -->
+<section class="section" id="results">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Main Results</h2>
+    <p class="has-text-justified">
+      We thoroughly evaluated six methods for learning from reward-free offline trajectories. The table below summarizes their performance across several key challenges:
+      <em>(i)</em> Transfer to new environments,
+      <em>(ii)</em> Zero-shot transfer to a new task,
+      <em>(iii)</em> Data-efficiency,
+      <em>(iv)</em> Best-case performance when data is abundant and high-quality,
+      <em>(v)</em> Ability to learn from random or suboptimal trajectories, and
+      <em>(vi)</em> Ability to stitch suboptimal trajectories to solve long-horizon tasks.
+    </p>
+
+    <!-- Example: embed a screenshot of your result table -->
+    <figure class="image is-fullwidth">
+      <img src="./static/images/table.png"
+           alt="Comparison table of different methods.">
+      <figcaption class="is-size-5">
+        <strong>Table&nbsp;1:</strong> Summary of each method's strengths and weaknesses in different data conditions and generalization requirements.
+      </figcaption>
+    </figure>
+
+    <h3 class="title is-4">Discussion</h3>
+    <ul>
+      <li>
+        <strong>Model-free GCRL (HIQL, GCIQL, CRL, GCBC):</strong> Works extremely well when data coverage is high and trajectories are good-quality. However, these methods struggle when data is sparse, short-horizon, random, or requires stitching.
+      </li>
+      <li>
+        <strong>HILP:</strong> Performs robustly under poor-quality data and can stitch short segments together. It is, however, somewhat more data-hungry and does not generalize as well to new tasks as a learned dynamics model.
+      </li>
+      <li>
+        <strong>Planning with a Latent Dynamics Model (PLDM/JEPA):</strong> Shows the best generalization in almost all challenging scenarios—suboptimal data, few samples, new tasks, and new environment layouts—at the cost of somewhat weaker best-case performance (compared to specialized RL) and higher inference-time overhead due to planning.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Conclusion -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Conclusion</h2>
+    <p class="has-text-justified">
+      We conducted a comprehensive study of methods for learning from offline reward-free trajectories, including both model-free RL and latent dynamics (optimal control) approaches. Our findings highlight the potential of a learned latent dynamics model for planning, which showed strong robustness to suboptimal datasets, high data-efficiency, and the best generalization across different environment layouts and tasks. 
+    </p>
+    <p class="has-text-justified">
+      Moving forward, we believe that robust representation learning of environment dynamics—potentially through non-generative, reconstruction-free methods—coupled with efficient planning algorithms is a promising way to make better use of large, unstructured offline datasets. Future work includes making planning faster (e.g., via policy distillation) and scaling up these approaches to real-world tasks and more complex environments.
+    </p>
+  </div>
+</section>
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
