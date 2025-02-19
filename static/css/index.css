@@ -162,6 +162,12 @@ body {
   height: auto;
 }
 
+.gif-container-big img {
+  width: 400px;
+  max-width: 400px; /* Prevents stretching */
+  height: auto;
+}
+
 /* Ensure GIFs take full width on smaller screens */
 @media (max-width: 2024px) {
   .column.is-one-fifth {

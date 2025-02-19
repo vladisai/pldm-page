@@ -80,7 +80,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Learning from Reward-Free Offline Data: A Case for Planning with Latent Dynamics Models</h1>
+            <h1 class="title is-1 publication-title">Learning from Reward-Free Offline Data:<br/> A Case for Planning with<br/> Latent Dynamics Models</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://vladisai.github.io">Vlad Sobal</a><sup>*1</sup>,</span>
@@ -221,6 +221,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section" id="setting">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">Environments</h2>
+    <h3 class="title is-4">The task: reach a specified goal in top-down navigation</h4>
+    We present two top-down navigation environments. In both, the goal is to reach a specified goal state. 
+    The task is illustrated on the left. We test algorithms' ability to learn from data of varying quality.
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <figure class="image gif-container-big">
+          <img src="./static/trajs/solved_episode.gif" alt="Example trajectory 1">
+        </figure>
+      </div>
+      <div class="column is-one-third">
+        <figure class="image" style="width:340px":>
+          <img src="./static/trajs/good_ds/episode_4.gif" alt="Example dataset trajectory 4">
+        </figure>
+      </div>
+    </div>
     <h3 class="title is-4">Example Trajectories from the Dataset</h2>
     <p>
       The following GIFs show example trajectories collected in the dataset. These illustrate the 
