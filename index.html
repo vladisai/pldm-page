@@ -425,8 +425,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <figure class="image is-fullwidth">
           <img src="./static/images/layout_change.png" alt="Maze layout evaluation results">
           <figcaption class="is-size-5">
-            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only JEPA solves the task (see Figure 3 for more).  
-            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. JEPA demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on JEPA.
+            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only PLDM solves the task (see Figure 3 for more).  
+            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. PLDM demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on PLDM.
           </figcaption>
         </figure>
       </div>
@@ -458,43 +458,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <br>
             <strong>Left:</strong> To test the importance of the dataset quality, we mix the random policy trajectories 
             and better quality trajectories (see Figure <a href="#fig-traj-examples">X</a>). 
-            As the amount of good quality data goes to 0, methods begin to fail, with PLDM (JEPA) and HILP being the most robust ones.
+            As the amount of good quality data goes to 0, methods begin to fail, with PLDM and HILP being the most robust ones.
             <br>
             <strong>Center:</strong> We measure methods' performance when trained with different sequence lengths. 
             We find that many goal-conditioned methods fail when train trajectories are short, which causes far-away goals 
             to become out-of-distribution for the resulting policy.
             <br>
             <strong>Right:</strong> We measure methods' performance with datasets of varying sizes. 
-            We see that PLDM (JEPA) is the most sample efficient and manages to get almost 50% success rate 
+            We see that PLDM is the most sample efficient and manages to get almost 50% success rate 
             even with a few thousand transitions.
         </figcaption>
     </figure>
 
     <h3 class="title is-3">Takeaways</h3>
     <ul>
-      <li>
-        <strong>Model-free GCRL (HIQL, GCIQL, CRL):</strong> Works extremely well when data coverage is high and trajectories are good-quality. However, these methods struggle when data is sparse, short-horizon, random, or requires stitching.
-      </li>
-      <li>
-        <strong>HILP:</strong> Performs robustly under poor-quality data and can stitch short segments together. However, it is somewhat more data-hungry and does not generalize as well to new tasks as a learned dynamics model.
-      </li>
-      <li>
-        <strong>Planning with a Latent Dynamics Model (PLDM/JEPA):</strong> Shows the best generalization in almost all challenging scenarios—suboptimal data, few samples, new tasks, and new environment layouts—at the cost of somewhat weaker best-case performance (compared to specialized RL) and higher inference-time overhead due to planning.
-      </li>
+        <li> Learning a latent dynamics model and using it to plan exhibits robustness to data quality, superior data efficiency, and the best generalization to new layouts and tasks; </li>
+        <li> Learning a well-structured latent-space (e.g. using HILP) enables trajectory stitching and robustness to data quality, although it is more data-hungry than other methods; </li>
+        <li> Model-free GCRL methods are a great choice when the data is plentiful and good quality. </li>
+      <!--<li>-->
+      <!--  <strong>Model-free GCRL (HIQL, GCIQL, CRL):</strong> Works extremely well when data coverage is high and trajectories are good-quality. However, these methods struggle when data is sparse, short-horizon, random, or requires stitching.-->
+      <!--</li>-->
+      <!--<li>-->
+      <!--  <strong>HILP:</strong> Performs robustly under poor-quality data and can stitch short segments together. However, it is somewhat more data-hungry and does not generalize as well to new tasks as a learned dynamics model.-->
+      <!--</li>-->
+      <!--<li>-->
+      <!--  <strong>Planning with a Latent Dynamics Model (PLDM):</strong> Shows the best generalization in almost all challenging scenarios—suboptimal data, few samples, new tasks, and new environment layouts—at the cost of somewhat weaker best-case performance (compared to specialized RL) and higher inference-time overhead due to planning.-->
+      <!--</li>-->
     </ul>
-  </div>
-</section>
-
-<!-- Conclusion -->
-<section class="section">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3">Conclusion</h2>
-    <p class="has-text-justified">
-      We conducted a comprehensive study of methods for learning from offline reward-free trajectories, including both model-free RL and latent dynamics (optimal control) approaches. Our findings highlight the potential of a learned latent dynamics model for planning, which showed strong robustness to suboptimal datasets, high data-efficiency, and the best generalization across different environment layouts and tasks. 
-    </p>
-    <p class="has-text-justified">
-      Moving forward, we believe that robust representation learning of environment dynamics—potentially through non-generative, reconstruction-free methods—coupled with efficient planning algorithms is a promising way to make better use of large, unstructured offline datasets. Future work includes making planning faster (e.g., via policy distillation) and scaling up these approaches to real-world tasks and more complex environments.
-    </p>
   </div>
 </section>
 
