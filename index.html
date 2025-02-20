@@ -48,6 +48,26 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <!--<script src="./static/js/index.js"></script>-->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const trigger = document.getElementById("collapsible-trigger");
+      const collapsibleBody = document.getElementById("collapsible-body");
+      const ellipsis = document.getElementById("ellipsis");
+
+      // On click, toggle hidden class & toggle ellipsis
+      trigger.addEventListener("click", () => {
+        collapsibleBody.classList.toggle("is-hidden");
+
+        if (collapsibleBody.classList.contains("is-hidden")) {
+          // Collapsed
+          ellipsis.textContent = "... (click to expand)";
+        } else {
+          // Expanded
+          ellipsis.textContent = "";
+        }
+      });
+    });
+   </script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -224,6 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h3 class="title is-4">The task: reach a specified goal in top-down navigation</h4>
     We present two top-down navigation environments. In both, the goal is to reach a specified goal state. 
     The task is illustrated on the left. We test algorithms' ability to learn from data of varying quality.
+    On the right is an example trajectory in the offline dataset.
     <div class="columns is-centered">
       <div class="column is-one-third">
         <figure class="image gif-container-big">
@@ -236,7 +257,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </figure>
       </div>
     </div>
-    <h3 class="title is-4">Example Trajectories from the Dataset</h2>
+    <div class="content" id="collapsible-trigger" style="cursor: pointer;">
+      <h2 class="title is-4">
+        Example Trajectories from the Dataset
+        <span id="ellipsis" class="is-size-7 has-text-grey">... (click to expand)</span>
+      </h2>
+    </div>
+
+    <div id="collapsible-body" class="is-hidden">
     <p>
       The following GIFs show example trajectories collected in the dataset. These illustrate the 
       variety of movements and behaviors captured in different data settings.
@@ -383,6 +411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="./static/trajs/65_ds/episode_4.gif" alt="Example trajectory 5">
         </figure>
       </div>
+    </div>
     </div>
   </div>
 </section>
