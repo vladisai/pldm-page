@@ -425,8 +425,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <figure class="image is-fullwidth">
           <img src="./static/images/layout_change.png" alt="Maze layout evaluation results">
           <figcaption class="is-size-5">
-            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only PLDM solves the task (see Figure 3 for more).  
-            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. PLDM demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation. See Figure 1 for more details on PLDM.
+            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only PLDM solves the task.  
+            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. PLDM demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation.
           </figcaption>
         </figure>
       </div>
@@ -457,7 +457,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             Values and shaded regions are means and standard deviations over 3 seeds, respectively.
             <br>
             <strong>Left:</strong> To test the importance of the dataset quality, we mix the random policy trajectories 
-            and better quality trajectories (see Figure <a href="#fig-traj-examples">X</a>). 
+            and better quality trajectories. 
             As the amount of good quality data goes to 0, methods begin to fail, with PLDM and HILP being the most robust ones.
             <br>
             <strong>Center:</strong> We measure methods' performance when trained with different sequence lengths. 
