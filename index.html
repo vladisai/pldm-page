@@ -207,9 +207,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="columns is-centered has-text-centered">
       <div class="column content">
         <h2 class="title is-3">Overview</h2>
-        <figure class="image is-fullwidth">
+        <figure class="image is-half">
           <img src="./static/images/main_idea.png" alt="Overview of our analysis">
-          <figcaption class="is-size-5">
+          <figcaption class="is-size-6">
             <strong>Overview of our analysis.</strong> We test six methods for learning from offline reward-free
             trajectories on 23 different datasets across two top-down navigation environments. We evaluate for six generalization properties required to scale to large offline datasets of suboptimal trajectories. We find that planning with a latent dynamics model (PLDM) demonstrates the highest level of generalization. <strong>Right:</strong> Diagram of PLDM. Circles represent variables, rectangles—loss components, half-ovals—trained models.
           </figcaption>
@@ -238,30 +238,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+
+<!-- Main Results -->
+<section class="section" id="results">
+  <div class="container is-max-desktop content">
+    <div class="columns is-centered has-text-centered mb-6">
+      <h2 class="title is-3">Training and Planning with Latent Dynamics Model</h2>
+    </div>
+
+    We train a latent dynamics model end-to-end from offline trajectories using the Joint Embedding Predictive Architecture (JEPA). 
+    JEPA learns to predict its own future states within the latent space. To achieve this, 
+    we minimize the prediction error using an L2 loss and apply Variance-Covariance Regularization (<a href="https://arxiv.org/pdf/2105.04906">A. Bardes, 2022</a>) to prevent representation collapse.
+
+    <figure class="image is-fullwidth">
+      <img src="./static/images/jepa_train.pdf" alt="jepa train", style="width: 80%;">
+    </figure>
+
+    To plan with the learned latent dynamics model at test time, we encode the goal state, and optimize the actions in order to minimize the distance between the unrolled 
+    predictions and the goal state in the latent space.
+
+    <figure class="image is-fullwidth">
+      <img src="./static/images/jepa_test_2.pdf" alt="jepa test", style="width: 80%;">
+    </figure>
+
+
+  </div>
+</section>
+
+
 <section class="section" id="setting">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3">Environments</h2>
-    <h3 class="title is-4">The task: reach a specified goal in top-down navigation</h4>
-    We present two top-down navigation environments. In both, the goal is to reach a specified goal state. 
-    The task is illustrated on the left. We test algorithms' ability to learn from data of varying quality.
-    On the right is an example trajectory in the offline dataset.
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <figure class="image gif-container-big">
-          <img src="./static/trajs/solved_episode.gif" alt="Example trajectory 1">
-        </figure>
-      </div>
-      <div class="column is-one-third">
-        <figure class="image" style="width:340px":>
-          <img src="./static/trajs/good_ds/episode_4.gif" alt="Example dataset trajectory 4">
-        </figure>
-      </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Environments & Datasets</h2>
     </div>
-    <div class="content" id="collapsible-trigger" style="cursor: pointer;">
-      <h2 class="title is-4">
-        Example Trajectories from the Dataset
-        <span id="ellipsis" class="is-size-7 has-text-grey">... (click to expand)</span>
-      </h2>
+
+    <h3 class="title is-4">The task: reach a specified goal in top-down navigation</h3>
+
+    We present two top-down navigation environments - Two Rooms and Diverse Mazes. In both, the goal is to reach a specified goal state. 
+    A typical task for Two Rooms is illustrated on the left. We test algorithms' ability to learn from data of varying quality.
+    On the right is an example trajectory in the offline dataset.
+
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <figure class="image gif-container-big">
+            <img src="./static/trajs/solved_episode.gif" alt="Example trajectory 1">
+          </figure>
+        </div>
+        <div class="column is-one-third">
+          <figure class="image" style="width:340px":>
+            <img src="./static/trajs/good_ds/episode_4.gif" alt="Example dataset trajectory 4">
+          </figure>
+        </div>
+      </div>
+      <div class="content" id="collapsible-trigger" style="cursor: pointer;">
+        <div class="columns is-centered has-text-centered mb-6">
+          <h3 class="title is-4">
+            Example Trajectories from the Two Rooms Dataset
+            <span id="ellipsis" class="is-size-7 has-text-grey">... (click to expand)</span>
+          </h3>
+        </div>
+      </div>
     </div>
 
     <div id="collapsible-body" class="is-hidden">
@@ -413,54 +452,221 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     </div>
+
+    <div class="columns is-centered has-text-centered">
+      <h3 class="title is-4">Diverse Mazes: testing generalization to new environments</h3>
+    </div>
+    In our second, more challenging environment, we train the agents on random trajectories of a point mass agent from mazes with different layouts,
+    and evaluate their performance on held-out layouts. 
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column content">
+        <figure class="image is-fullwidth">
+          <img src="./static/images/layout_change.pdf" alt="Maze layouts", style="width: 70%;">
+        </figure>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- Main Results -->
 <section class="section" id="results">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3">Main Results</h2>
+    <div class="columns is-centered has-text-centered mb-6">
+      <h2 class="title is-3">Main Results</h2>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <h3 class="title is-4">Generalization to new environments</h3>
+    </div>
+
     <div class="columns is-centered has-text-centered">
       <div class="column content">
         <figure class="image is-fullwidth">
-          <img src="./static/images/layout_change.png" alt="Maze layout evaluation results">
-          <figcaption class="is-size-5">
-            <strong>Left:</strong> We train offline goal-conditioned agents on trajectories collected in a subset of maze layouts (left) and evaluate on held-out layouts, observing trajectories shown on the right. Only PLDM solves the task.  
-            <strong>Right:</strong> Success rates of tested methods on held-out layouts, as a function of the number of training layouts. The rightmost plot shows success rates of models trained on data from five layouts, evaluating on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. PLDM demonstrates the best generalization performance. Results are averaged over 3 seeds, shaded area denotes standard deviation.
+          <img src="./static/images/layout_change_res.pdf" alt="Maze layout evaluation results", style="width: 85%;">
+          <figcaption class="is-size-6">
+            <strong>Left: </strong>Success rates of tested methods on held-out layouts, as a function of the number of training layouts. <strong>Right: </strong> success rates of models trained on data from 5 layouts, evaluated on held-out layouts ranging from similar to training layouts to out-of-distribution ones. We use map layout edit distance from the training layouts as a measure of distribution shift. PLDM demonstrates the best generalization. Results are averaged over 3 seeds, shaded area denotes standard deviation.
           </figcaption>
         </figure>
       </div>
     </div>
-    <p class="has-text-justified">
-      We thoroughly evaluated six methods for learning from reward-free offline trajectories. The table below summarizes their performance across several key challenges:
-      <em>(i)</em> Transfer to new environments,
-      <em>(ii)</em> Zero-shot transfer to a new task,
-      <em>(iii)</em> Data-efficiency,
-      <em>(iv)</em> Best-case performance when data is abundant and high-quality,
-      <em>(v)</em> Ability to learn from random or suboptimal trajectories, and
-      <em>(vi)</em> Ability to stitch suboptimal trajectories to solve long-horizon tasks.
-    </p>
+
+
+    <style>
+      .caption-col {
+        width: 150px; /* Adjust this width to suit your design */
+      }
+
+      .red-text {
+        color: red;
+      }
+
+      .green-text {
+        color: green;
+      }
+
+      .yellow-text {
+        color: #ffcc00;
+      }
+
+    </style>
+
+    <div class="columns is-centered is-vcentered">
+
+      <div class="column caption-col">
+        <p class="has-text-centered has-text-weight-bold"><span class="green-text">Low</span> distribution shift</p>
+      </div>
+
+      <!-- Images column, set to narrow -->
+      <div class="column is-narrow">
+        <!-- Add custom 'small-gap' class here -->
+        <div class="columns is-centered is-variable is-1">
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">CRL</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_crl_0.gif" alt="Example trajectory 1">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">GCBC</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gcbc_0.gif" alt="Example trajectory 2">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">GCIQL</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gciql_0.gif" alt="Example trajectory 3">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">HILP</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hilp_0.gif" alt="Example trajectory 4">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">HIQL</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hiql_0.gif" alt="Example trajectory 5">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <p class="has-text-centered has-text-weight-bold">PLDM</p>
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_pldm_0.gif" alt="Example trajectory 6">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered is-vcentered">
+
+      <div class="column caption-col">
+        <p class="has-text-centered has-text-weight-bold"><span class="yellow-text">Medium</span> distribution shift</p>
+      </div>
+
+      <!-- Images column, set to narrow -->
+      <div class="column is-narrow">
+        <!-- Add custom 'small-gap' class here -->
+        <div class="columns is-centered is-variable is-1">
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_crl_6.gif" alt="Example trajectory 1">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gcbc_6.gif" alt="Example trajectory 2">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gciql_6.gif" alt="Example trajectory 3">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hilp_6.gif" alt="Example trajectory 4">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hiql_6.gif" alt="Example trajectory 5">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_pldm_6.gif" alt="Example trajectory 6">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered is-vcentered mb-6">
+
+      <div class="column caption-col">
+        <p class="has-text-centered has-text-weight-bold"><span class="red-text">High</span> distribution shift</p>
+      </div>
+
+      <!-- Images column, set to narrow -->
+      <div class="column is-narrow">
+        <!-- Add custom 'small-gap' class here -->
+        <div class="columns is-centered is-variable is-1">
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_crl_7.gif" alt="Example trajectory 1">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gcbc_7.gif" alt="Example trajectory 2">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_gciql_7.gif" alt="Example trajectory 3">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hilp_7.gif" alt="Example trajectory 4">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_hiql_7.gif" alt="Example trajectory 5">
+            </figure>
+          </div>
+          <div class="column is-one-fifth">
+            <figure class="image is-128x128">
+              <img src="./static/maze_trajs/traj_pldm_7.gif" alt="Example trajectory 6">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- Example: embed a screenshot of your result table -->
-    <figure class="image is-fullwidth">
-      <img src="./static/images/table.png"
-           alt="Comparison table of different methods.">
-      <figcaption class="is-size-5">
-        <strong>Table&nbsp;1:</strong> Summary of each method's strengths and weaknesses in different data conditions and generalization requirements.
-      </figcaption>
-    </figure>
-
+    <div class="columns is-centered has-text-centered">
+      <h3 class="title is-4">Generalizing from suboptimal training data</h3>
+    </div>
     <figure class="image is-fullwidth">
         <img src="./static/images/all_exps.png" alt="Main experiments on two rooms environment.">
-        <figcaption class="is-size-5">
+        <figcaption class="is-size-6">
             <strong>Testing the selected methods' performance under different dataset constraints.</strong> 
             Values and shaded regions are means and standard deviations over 3 seeds, respectively.
             <br>
             <strong>Left:</strong> To test the importance of the dataset quality, we mix the random policy trajectories 
-            and better quality trajectories. 
-            As the amount of good quality data goes to 0, methods begin to fail, with PLDM and HILP being the most robust ones.
+            and good quality trajectories. 
+            As the amount of good quality data goes towards 0, methods begin to fail, with PLDM and HILP being the most robust ones.
             <br>
-            <strong>Center:</strong> We measure methods' performance when trained with different sequence lengths. 
+            <strong>Center:</strong> We measure methods' performance when trained with different trajectory lengths. 
             We find that many goal-conditioned methods fail when train trajectories are short, which causes far-away goals 
             to become out-of-distribution for the resulting policy.
             <br>
@@ -470,7 +676,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </figcaption>
     </figure>
 
-    <h3 class="title is-3">Takeaways</h3>
+    <div class="columns is-centered has-text-centered">
+      <h3 class="title is-4">Summary</h3>
+    </div>
+    <p class="has-text-justified">
+      Having thoroughly evaluated six methods for learning from reward-free offline trajectories. The table below summarizes their performance across several key challenges:
+      <em>(i)</em> Transfer to new environments,
+      <em>(ii)</em> Zero-shot transfer to a new task,
+      <em>(iii)</em> Data-efficiency,
+      <em>(iv)</em> Best-case performance when data is abundant and high-quality,
+      <em>(v)</em> Ability to learn from random or suboptimal trajectories, and
+      <em>(vi)</em> Ability to stitch suboptimal trajectories to solve long-horizon tasks.
+    </p>
+
+    <figure class="image is-fullwidth">
+      <img src="./static/images/table.png"
+           alt="Comparison table of different methods.">
+      <figcaption class="is-size-6">
+        <strong>Table&nbsp;1:</strong> Summary of each method's strengths and weaknesses in different data conditions and generalization requirements.
+      </figcaption>
+    </figure>
+
+    <div class="columns is-centered has-text-centered">
+      <h3 class="title is-3">Takeaways</h3>
+    </div>
     <ul>
         <li> Learning a latent dynamics model and using it to plan exhibits robustness to data quality, superior data efficiency, and the best generalization to new layouts and tasks; </li>
         <li> Learning a well-structured latent-space (e.g. using HILP) enables trajectory stitching and robustness to data quality, although it is more data-hungry than other methods; </li>
@@ -491,7 +720,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title">BibTeX</h2>
+    </div>
     <pre><code>@article{sobal2025learning,
   title={Learning from Reward-Free Offline Data: A Case for Planning with Latent Dynamics Models},
   author={Sobal, Vlad and Zhang, Wancong and Cho, Kynghyun and Balestriero, Randall and Rudner, Tim G. J. and LeCun, Yann},
